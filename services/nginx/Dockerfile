@@ -4,9 +4,9 @@ FROM nginx:mainline
 RUN ["rm", "/etc/nginx/conf.d/default.conf"]
 
 # Adds custom Nginx configuration
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./ReceiptTracker.conf /etc/nginx/sites-available/ReceiptTracker.conf
+COPY ./nginx.conf /etc/nginx/
+COPY ./ReceiptTracker.conf /etc/nginx/sites-available/
 
-# Enables custom config for Nginx
-RUN ["mkdir", "/etc/nginx/sites-enabled"]
+## Enables custom config for Nginx
+RUN ["mkdir", "/etc/nginx/sites-enabled/"]
 RUN ["ln", "-s", "/etc/nginx/sites-available/ReceiptTracker.conf", "/etc/nginx/sites-enabled/ReceiptTracker.conf"]
