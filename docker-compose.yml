@@ -2,8 +2,13 @@ version: '3'
 
 services:
     nginx:
-        build: ./services/nginx
+        build: ./nginx
+        restart: always
+        depends_on: 
+            - node
         ports:
-            - 80:80
+            - "80:80"
     node:
-        build: ./services/node
+        build: ./node
+        expose:
+            - "3000"
